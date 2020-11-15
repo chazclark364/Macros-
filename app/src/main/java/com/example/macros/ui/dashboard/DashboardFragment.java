@@ -22,12 +22,20 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.macros.ui.home.HomeFragment.CARB;
+import static com.example.macros.ui.home.HomeFragment.CARB_GOAL;
+import static com.example.macros.ui.home.HomeFragment.FAT;
+import static com.example.macros.ui.home.HomeFragment.FAT_GOAL;
+import static com.example.macros.ui.home.HomeFragment.PROTEIN;
+import static com.example.macros.ui.home.HomeFragment.PROTEIN_GOAL;
+import static com.example.macros.ui.home.HomeFragment.macros;
+
 public class DashboardFragment extends Fragment {
 
     private DashboardViewModel dashboardViewModel;
 
     PieChart pieChart;
-    PieChart pieChart2;
+    PieChart pieChartGoal;
     PieData pieData;
     PieData pieData2;
 
@@ -47,9 +55,9 @@ public class DashboardFragment extends Fragment {
 //        });
         pieChart = root.findViewById(R.id.pieChart);
         pieChart.setUsePercentValues(true);
-        pieEntryList.add(new PieEntry(10,"Protein"));
-        pieEntryList.add(new PieEntry(5,"carbohydrates"));
-        pieEntryList.add(new PieEntry(7,"FAT"));
+        pieEntryList.add(new PieEntry((macros.get(FAT)), "FAT"));
+        pieEntryList.add(new PieEntry((macros.get(CARB)),"CARB"));
+        pieEntryList.add(new PieEntry((macros.get(PROTEIN)),"Protein"));
         PieDataSet pieDataSet = new PieDataSet(pieEntryList,"T");
         pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         pieData = new PieData(pieDataSet);
@@ -57,16 +65,17 @@ public class DashboardFragment extends Fragment {
         pieChart.setDrawHoleEnabled(false);
         pieChart.invalidate();
 
-        pieChart2= root.findViewById(R.id.pieChart2);
-        pieChart2.setUsePercentValues(true);
-        pieEntryList2.add(new PieEntry(10,"Protein"));
-        pieEntryList2.add(new PieEntry(5,"Carbohydrates"));
+        pieChartGoal= root.findViewById(R.id.pieChart2);
+        pieChartGoal.setUsePercentValues(true);
+        pieEntryList2.add(new PieEntry(macros.get(FAT_GOAL),"FAT_Goal"));
+        pieEntryList2.add(new PieEntry(macros.get(CARB_GOAL),"CARB_Goal"));
+        pieEntryList2.add(new PieEntry(macros.get(PROTEIN_GOAL),"Protein_Goal"));
         PieDataSet pieDataSet2 = new PieDataSet(pieEntryList2,"P");
         pieDataSet2.setColors(ColorTemplate.JOYFUL_COLORS);
         pieData2 = new PieData(pieDataSet2);
-        pieChart2.setData(pieData2);
-        pieChart2.setDrawHoleEnabled(false);
-        pieChart2.invalidate();
+        pieChartGoal.setData(pieData2);
+        pieChartGoal.setDrawHoleEnabled(false);
+        pieChartGoal.invalidate();
         return root;
     }
 
