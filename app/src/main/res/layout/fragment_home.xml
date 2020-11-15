@@ -173,24 +173,41 @@
 
     <Button
         android:id="@+id/statusButton"
-        android:layout_width="150dp"
+        android:layout_width="110dp"
         android:layout_height="45dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="Status Update"
+        android:text="Send Update"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/goalProteinView" />
 
     <Button
         android:id="@+id/reminderButton"
-        android:layout_width="150dp"
+        android:layout_width="110dp"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:text="Set Reminder"
+        android:text="Reminder"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editProteinGoal" />
+
+    <Button
+        android:id="@+id/advise"
+        android:layout_width="110dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="224dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Advise"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintEnd_toStartOf="@+id/reminderButton"
+        app:layout_constraintStart_toEndOf="@+id/statusButton"
+        app:layout_constraintTop_toBottomOf="@+id/goalLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

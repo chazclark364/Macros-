@@ -1,6 +1,9 @@
 package com.example.macros.ui.home;
 
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -26,6 +29,8 @@ import com.example.macros.R;
 
 import java.util.HashMap;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
@@ -41,6 +46,10 @@ public class HomeFragment extends Fragment {
     Button editFatsGoal;
     Button editCarbsGoal;
     Button editProteinGoal;
+
+    Button status;
+    Button advise;
+    Button reminder;
     public static HashMap<String, Integer> macros = new HashMap<>();
     public static final String FAT = "fatID";
     public static final String CARB = "carbID";
@@ -88,6 +97,11 @@ public class HomeFragment extends Fragment {
         editFatsGoal = root.findViewById(R.id.editFatGoal);
         editCarbsGoal = root.findViewById(R.id.editCarbGoal);
         editProteinGoal = root.findViewById(R.id.editProteinGoal);
+
+        //Feature Buttons
+        status = root.findViewById(R.id.statusButton);
+        advise = root.findViewById(R.id.advise);
+        reminder = root.findViewById(R.id.reminderButton);
 
         //TODO: Check if we already have a macro map saved on disk else create new one
 
@@ -142,6 +156,20 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 editProteinGoal();
+            }
+        });
+
+        advise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getRecommendation();
+            }
+        });
+
+        status.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                statusUpdate();
             }
         });
 
@@ -433,6 +461,94 @@ public class HomeFragment extends Fragment {
             }
         });
         dialog.show();
+    }
+
+    /**
+     * This function will produce recommendation of food based off of your biggest goal deficit
+     * source of reccomendations: https://healthyeater.com/carb-protein-fat-rich-foods
+     *
+     */
+    public void  getRecommendation() {
+        String goodProteins = "Eggs, Salmon, Tofu, Greek yogurt, Pumpkin Seeds, Turkey breast";
+        String goodCarbs = "Apples, Bananas, Quinoa, Sweet potatoes, Brown rice";
+        String goodFats = "Almonds, Walnuts, Peanuts, Avocado, Dark Chocolate, Pecans";
+        String biggestDeficit = "";
+
+        String message = "";
+        Boolean goalsReached = true;
+
+        Integer low = 0;
+        Integer temp = 0;
+
+        if(macros.get(FAT) < macros.get(FAT_GOAL)) {
+            biggestDeficit = FAT;
+            low = macros.get(FAT_GOAL) - macros.get(FAT);
+            goalsReached = false;
+        }
+        if(macros.get(CARB) < macros.get(CARB_GOAL)) {
+            temp = (macros.get(CARB_GOAL) - macros.get(CARB));
+            if (temp > low) {
+                biggestDeficit = CARB;
+                low = macros.get(CARB_GOAL) - macros.get(CARB);
+                goalsReached = false;
+            }
+        }
+        if(macros.get(PROTEIN) < macros.get(PROTEIN_GOAL)) {
+            temp = (macros.get(PROTEIN_GOAL) - macros.get(PROTEIN));
+            if (temp > low) {
+                biggestDeficit = PROTEIN;
+                low = macros.get(PROTEIN_GOAL) - macros.get(PROTEIN);
+                goalsReached = false;
+            }
+        }
+
+        if(goalsReached == false) {
+            if(biggestDeficit == FAT) {
+                message = "Your biggest goal deficit is Fat by " + String.valueOf(low) + " grams. Try eating the following to get more healthy fat: " + goodFats;
+            } else if (biggestDeficit == CARB) {
+                message = "Your biggest goal deficit is Carbs by " + String.valueOf(low) + " grams. Try eating the following to get more healthy carbs: " + goodCarbs;
+            } else if (biggestDeficit == PROTEIN) {
+                message = "Your biggest goal deficit is Protein by " + String.valueOf(low) + " grams. Try eating the following to get more healthy protein: " + goodProteins;
+            }
+        } else {
+            message = "You reached all of your goals! CONGRATS!";
+        }
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this.root.getContext());
+        dialog.setTitle("Advise to Reach Goal!");
+        dialog.setMessage(message);
+        dialog.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface message, int w) {
+                message.cancel();
+            }
+        });
+        dialog.show();
+    }
+
+    public void statusUpdate() {
+        ClipboardManager clipboard = (ClipboardManager)
+                getSystemService(this.root.getContext(), ClipboardManager.class);
+        String message = generateUpdate();
+
+        ClipData clip = ClipData.newPlainText("Status Update", message);
+        clipboard.setPrimaryClip(clip);
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this.root.getContext());
+        dialog.setTitle("Update Copied to Clipboard");
+        dialog.setMessage(message);
+        dialog.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface message, int w) {
+                message.cancel();
+            }
+        });
+        dialog.show();
+    }
+
+    private String generateUpdate() {
+        String message = "";
+        message = "Hi, I am tracking my nutrients with Macros+, I have had " + macros.get(FAT) + " grams of Fat, " + macros.get(CARB) +  " grams of Carbs," + " and " + macros.get(PROTEIN) + " grams of Protein!";
+        return message;
     }
 
 }
