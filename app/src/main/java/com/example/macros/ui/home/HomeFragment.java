@@ -207,8 +207,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(DialogInterface message, int w) {
                 String fat = input.getText().toString();
-                fatsTextView.setText(fat + " grams");
-                macros.put(FAT,Integer.valueOf(fat));
+                String prev = (String) fatsTextView.getText();
+                prev = prev.replace(" grams", "");
+                Integer newVal = Integer.valueOf(prev) + Integer.valueOf(fat);
+                fatsTextView.setText(newVal + " grams");
+                macros.put(FAT,newVal);
                 saveMacros();
             }
         });
@@ -216,6 +219,18 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(DialogInterface message, int w) {
                 message.cancel();
+            }
+        });
+
+        dialog.setNeutralButton("Reset", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface message, int w) {
+                Integer newVal = 0;
+                fatsTextView.setText(newVal + " grams");
+                macros.put(FAT, newVal);
+                saveMacros();
+                message.cancel();
+
             }
         });
 
@@ -233,8 +248,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(DialogInterface message, int w) {
                 String carb = input.getText().toString();
-                carbsTextView.setText(carb + " grams");
-                macros.put(CARB, Integer.valueOf(carb));
+                String prev = (String) carbsTextView.getText();
+                prev = prev.replace(" grams", "");
+                Integer newVal = Integer.valueOf(prev) + Integer.valueOf(carb);
+                carbsTextView.setText(newVal + " grams");
+                macros.put(CARB, newVal);
                 saveMacros();
             }
         });
@@ -242,6 +260,18 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(DialogInterface message, int w) {
                 message.cancel();
+            }
+        });
+
+        dialog.setNeutralButton("Reset", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface message, int w) {
+                Integer newVal = 0;
+                carbsTextView.setText(newVal + " grams");
+                macros.put(CARB, newVal);
+                saveMacros();
+                message.cancel();
+
             }
         });
 
@@ -259,14 +289,28 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(DialogInterface message, int w) {
                 String protein = input.getText().toString();
-                proteinTextView.setText(protein + " grams");
-                macros.put(PROTEIN, Integer.valueOf(protein));
+                String prev = (String) proteinTextView.getText();
+                prev = prev.replace(" grams", "");
+                Integer newVal = Integer.valueOf(prev) + Integer.valueOf(protein);
+                proteinTextView.setText(newVal + " grams");
+                macros.put(PROTEIN, newVal);
                 saveMacros();
             }
         });
         dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface message, int w) {
+                message.cancel();
+            }
+        });
+
+        dialog.setNeutralButton("Reset", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface message, int w) {
+                Integer newVal = 0;
+                proteinTextView.setText(newVal + " grams");
+                macros.put(PROTEIN, newVal);
+                saveMacros();
                 message.cancel();
             }
         });
@@ -284,14 +328,28 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(DialogInterface message, int w) {
                 String fat = input.getText().toString();
-                fatsGoalTextView.setText(fat + " grams");
-                macros.put(FAT_GOAL,Integer.valueOf(fat));
+                String prev = (String) fatsGoalTextView.getText();
+                prev = prev.replace(" grams", "");
+                Integer newVal = Integer.valueOf(prev) + Integer.valueOf(fat);
+                fatsGoalTextView.setText(newVal + " grams");
+                macros.put(FAT_GOAL,newVal);
                 saveMacros();
             }
         });
         dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface message, int w) {
+                message.cancel();
+            }
+        });
+
+        dialog.setNeutralButton("Reset", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface message, int w) {
+                Integer newVal = 0;
+                fatsGoalTextView.setText(newVal + " grams");
+                macros.put(FAT_GOAL, newVal);
+                saveMacros();
                 message.cancel();
             }
         });
@@ -309,14 +367,28 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(DialogInterface message, int w) {
                 String carb = input.getText().toString();
-                carbsGoalTextView.setText(carb + " grams");
-                macros.put(CARB_GOAL, Integer.valueOf(carb));
+                String prev = (String) carbsGoalTextView.getText();
+                prev = prev.replace(" grams", "");
+                Integer newVal = Integer.valueOf(prev) + Integer.valueOf(carb);
+                carbsGoalTextView.setText(newVal + " grams");
+                macros.put(CARB_GOAL, newVal);
                 saveMacros();
             }
         });
         dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface message, int w) {
+                message.cancel();
+            }
+        });
+
+        dialog.setNeutralButton("Reset", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface message, int w) {
+                Integer newVal = 0;
+                carbsGoalTextView.setText(newVal + " grams");
+                macros.put(CARB_GOAL, newVal);
+                saveMacros();
                 message.cancel();
             }
         });
@@ -335,14 +407,28 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(DialogInterface message, int w) {
                 String protein = input.getText().toString();
-                proteinGoalTextView.setText(protein + " grams");
-                macros.put(PROTEIN_GOAL, Integer.valueOf(protein));
+                String prev = (String) proteinGoalTextView.getText();
+                prev = prev.replace(" grams", "");
+                Integer newVal = Integer.valueOf(prev) + Integer.valueOf(protein);
+                proteinGoalTextView.setText(newVal + " grams");
+                macros.put(PROTEIN_GOAL, newVal);
                 saveMacros();
             }
         });
         dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface message, int w) {
+                message.cancel();
+            }
+        });
+
+        dialog.setNeutralButton("Reset", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface message, int w) {
+                Integer newVal = 0;
+                proteinGoalTextView.setText(newVal + " grams");
+                macros.put(PROTEIN_GOAL, newVal);
+                saveMacros();
                 message.cancel();
             }
         });
