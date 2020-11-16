@@ -18,8 +18,13 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_news"
         android:name="com.example.macros.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_news"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_reminder"
+        android:name="com.example.macros.ui.Reminder.ReminderFragment"
+        android:label="@string/title_reminder"
+        tools:layout="@layout/fragment_reminder" />
 </navigation>
