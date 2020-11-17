@@ -36,7 +36,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:text="Edit Carbs"
+        android:text="Edit Carb"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editFat" />
@@ -145,7 +145,8 @@
         android:layout_marginTop="80dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:text="editFat"
+        android:text="Edit Fat"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editProtein" />
 
@@ -156,7 +157,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:text="editCarb"
+        android:text="Edit Carb"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editFatGoal" />
 
@@ -167,7 +169,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:text="editprotein"
+        android:text="Edit Protein"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editCarbGoal" />
 
@@ -184,30 +187,15 @@
         app:layout_constraintTop_toBottomOf="@+id/goalProteinView" />
 
     <Button
-        android:id="@+id/reminderButton"
+        android:id="@+id/advise"
         android:layout_width="110dp"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:text="Reminder"
+        android:text="Advise"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editProteinGoal" />
-
-    <Button
-        android:id="@+id/advise"
-        android:layout_width="110dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="224dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:text="Advise"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintEnd_toStartOf="@+id/reminderButton"
-        app:layout_constraintStart_toEndOf="@+id/statusButton"
-        app:layout_constraintTop_toBottomOf="@+id/goalLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

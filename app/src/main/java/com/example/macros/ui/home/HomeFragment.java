@@ -94,7 +94,6 @@ public class HomeFragment extends Fragment{
         //Feature Buttons
         status = root.findViewById(R.id.statusButton);
         advise = root.findViewById(R.id.advise);
-        reminder = root.findViewById(R.id.reminderButton);
 
         //TODO: Check if we already have a macro map saved on disk else create new one
 
@@ -166,11 +165,7 @@ public class HomeFragment extends Fragment{
             }
         });
 
-        reminder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
+
         return root;
     }
 
