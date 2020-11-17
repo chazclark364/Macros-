@@ -4,12 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.macros.R;
@@ -69,9 +66,9 @@ public class DashboardFragment extends Fragment {
         pieChartGoal= root.findViewById(R.id.pieChart2);
         pieChartGoal.setUsePercentValues(true);
         pieChartGoal.getDescription().setEnabled(false);
-        pieEntryList2.add(new PieEntry(macros.get(FAT_GOAL),"Fat Goal"));
-        pieEntryList2.add(new PieEntry(macros.get(CARB_GOAL),"Carb Goal"));
-        pieEntryList2.add(new PieEntry(macros.get(PROTEIN_GOAL),"Protein Goal"));
+        pieEntryList2.add(new PieEntry(macros.get(FAT_GOAL),"FatGoal"));
+        pieEntryList2.add(new PieEntry(macros.get(CARB_GOAL),"CarbGoal"));
+        pieEntryList2.add(new PieEntry(macros.get(PROTEIN_GOAL),"ProteinGoal"));
         PieDataSet pieDataSet2 = new PieDataSet(pieEntryList2,"");
         pieDataSet2.setColors(ColorTemplate.JOYFUL_COLORS);
         pieData2 = new PieData(pieDataSet2);
