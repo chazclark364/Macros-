@@ -70,7 +70,7 @@ public class DashboardFragment extends Fragment {
         pieEntryList2.add(new PieEntry(macros.get(CARB_GOAL),"CarbGoal"));
         pieEntryList2.add(new PieEntry(macros.get(PROTEIN_GOAL),"ProteinGoal"));
         PieDataSet pieDataSet2 = new PieDataSet(pieEntryList2,"");
-        pieDataSet2.setColors(ColorTemplate.JOYFUL_COLORS);
+        pieDataSet2.setColors(ColorTemplate.COLORFUL_COLORS);
         pieData2 = new PieData(pieDataSet2);
         pieChartGoal.setData(pieData2);
         pieChartGoal.setDrawHoleEnabled(false);
