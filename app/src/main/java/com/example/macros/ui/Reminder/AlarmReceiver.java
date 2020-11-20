@@ -42,12 +42,16 @@ public class AlarmReceiver extends BroadcastReceiver {
         // Prepare Notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(android.R.drawable.ic_lock_idle_alarm)
-                .setContentTitle("Eat more Carbs")
+                .setContentTitle("Daily Reminder :)")
                 .setContentText(mainIntent.getStringExtra("message"))
                 .setContentIntent(contentIntent)
                 .setStyle(new NotificationCompat.InboxStyle()
                 .addLine("Eat healthy")
-                .addLine("Eat more proteins"))
+                .addLine("Eat 30 grams of proteins")
+                .addLine("Eat 50 grams of Carbs")
+                                .addLine("Eat 20 grams of Fat")
+                )
+
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setAutoCancel(false);
 

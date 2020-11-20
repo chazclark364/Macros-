@@ -50,11 +50,9 @@ public class ReminderFragment extends Fragment {
        setter = root.findViewById(R.id.setBtn);
        cancel = root.findViewById(R.id.cancelBtn);
        timePicker = root.findViewById(R.id.timePicker);
-       editText = root.findViewById(R.id.editText);
 
      intent  = new Intent(getActivity(), AlarmReceiver.class);
         intent.putExtra("notificationId", notificationId);
-        intent.putExtra("message", editText.getText().toString());
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
                 getActivity(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT
